@@ -16,17 +16,17 @@ namespace SwiggyApi.Models.Customers
         {
             try
             {
-                Customer Copy = new Customer()
-                {
+            Customer Copy = new Customer()
+            {
 
-                    Customer_Name = cust.Customer_Name,
-                    Address = cust.Address,
-                    TotalSpent = cust.TotalSpent,
-                };
-                _context.Customers.Add(Copy);
-                _context.SaveChanges();
-                return Copy;
-            }
+                Customer_Name = cust.Customer_Name,
+                Address = cust.Address,
+                TotalSpent = cust.TotalSpent,
+            };
+            _context.Customers.Add(Copy);
+            _context.SaveChanges();
+            return Copy;
+        }
             catch
             {
                 throw new Exception("Unable to add Customer");
@@ -37,15 +37,15 @@ namespace SwiggyApi.Models.Customers
         {
             try
             {
-                var customer = _context.Customers.FirstOrDefault(x => x.Customer_Id == id);
-                if (customer != null)
-                {
-                    _context.Customers.Remove(customer);
-                    _context.SaveChanges();
-                    return true;
-                }
-                return false;
+            var customer = _context.Customers.FirstOrDefault(x => x.Customer_Id == id);
+            if (customer != null)
+            {
+                _context.Customers.Remove(customer);
+                _context.SaveChanges();
+                return true;
             }
+            return false;
+        }
             catch
             {
                 throw new Exception("Unable to delete user");
@@ -56,9 +56,9 @@ namespace SwiggyApi.Models.Customers
         {
             try
             {
-                List<Customer> cust = _context.Customers.ToList();
-                return cust;
-            }
+            List<Customer> cust = _context.Customers.ToList();
+            return cust;
+        }
             catch
             {
                 throw new Exception("Server Error! Can't load customer Details");

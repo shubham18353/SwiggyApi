@@ -16,18 +16,18 @@ namespace SwiggyApi.Models.Orders
         {
             try
             {
-                Order Copy = new Order()
-                {
-                    OrderValue = order.OrderValue,
-                    OrderType = order.OrderType,
+            Order Copy = new Order()
+            {
+                OrderValue = order.OrderValue,
+                OrderType = order.OrderType,
                     Customer_Id = order.Customer_Id,
-
-                };
-                _context.Orders.Add(Copy);
-
-                _context.SaveChanges();
-                return Copy;
-            }
+                
+            };
+            _context.Orders.Add(Copy);
+            
+            _context.SaveChanges();
+            return Copy;
+        }
             catch
             {
                 throw new Exception("Order can't be placed");
@@ -38,15 +38,15 @@ namespace SwiggyApi.Models.Orders
         {
             try
             {
-                var order = _context.Orders.FirstOrDefault(x => x.Order_Id == id);
-                if (order != null)
-                {
-                    _context.Orders.Remove(order);
-                    _context.SaveChanges();
-                    return true;
-                }
-                return false;
+            var order = _context.Orders.FirstOrDefault(x => x.Order_Id == id);
+            if (order != null)
+            {
+                _context.Orders.Remove(order);
+                _context.SaveChanges();
+                return true;
             }
+            return false;
+        }
             catch
             {
                 throw new Exception("Unable to delete order");
@@ -57,9 +57,9 @@ namespace SwiggyApi.Models.Orders
         {
             try
             {
-                List<Order> order = _context.Orders.ToList();
-                return order;
-            }
+            List<Order> order = _context.Orders.ToList();
+            return order;
+        }
             catch
             {
                 throw new Exception("Connection Error");

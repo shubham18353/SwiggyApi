@@ -17,17 +17,17 @@ namespace SwiggyApi.Models.Products
         {
             try
             {
-                Product productCopy = new Product()
-                {
+            Product productCopy = new Product()
+            {
 
-                    ProductName = product.ProductName,
-                    ProductType = product.ProductType,
-                    Price = product.Price,
-                };
-                _context.Products.Add(productCopy);
-                _context.SaveChanges();
-                return productCopy;
-            }
+                ProductName = product.ProductName,
+                ProductType = product.ProductType,
+                Price = product.Price,
+            };
+            _context.Products.Add(productCopy);
+            _context.SaveChanges();
+            return productCopy;
+        }
             catch
             {
                 throw new Exception("Unable to add Product");
@@ -38,15 +38,15 @@ namespace SwiggyApi.Models.Products
         {
             try
             {
-                var product = _context.Products.FirstOrDefault(x => x.Id == id);
-                if (product != null)
-                {
-                    _context.Products.Remove(product);
-                    _context.SaveChanges();
-                    return true;
-                }
-                return false;
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                _context.SaveChanges();
+                return true;
             }
+            return false;
+        }
             catch
             {
                 throw new Exception("Product can't be deleted");
@@ -57,9 +57,9 @@ namespace SwiggyApi.Models.Products
         {
             try
             {
-                List<Product> products = _context.Products.ToList();
-                return products;
-            }
+            List<Product> products = _context.Products.ToList();
+            return products;
+        }
             catch
             {
                 throw new Exception("Server Error! Can't load Products");
